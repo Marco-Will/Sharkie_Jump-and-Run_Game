@@ -1,6 +1,6 @@
 let canvas;
-let character = new Image();
-let ctx;
+let world;
+
 
 
 function getId(id)
@@ -11,15 +11,11 @@ function getId(id)
 function init()
 {
     canvas = getId('canvas');
-    ctx = canvas.getContext('2d')
+    world = new World(canvas);
+    
 
 
-    character.src = 'img/1.Sharkie/1.IDLE/1.png'
-
-    setTimeout(function() 
-    {
-        ctx.drawImage(character, 20, 20, 50, 100)
-    },2000)
+    console.log('my character is', world.character);
   
 
 
