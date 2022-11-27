@@ -1,4 +1,4 @@
-class MovaableObject
+class MoveableObject
 {
     x = 0;
     y = 200;
@@ -7,6 +7,7 @@ class MovaableObject
     width = 100;
     imageCache = [];
     moveSpeed = 0.4;
+    otherDirection = false;
 
 
 

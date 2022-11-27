@@ -1,4 +1,4 @@
-class Character extends MovaableObject
+class Character extends MoveableObject
 {
    IMAGES_IDLE =
 
@@ -23,6 +23,10 @@ class Character extends MovaableObject
    
 ]
 
+    world;
+    moveSpeed = 4;
+
+
     currentImage = 0;
 
     constructor()
@@ -35,16 +39,51 @@ class Character extends MovaableObject
 
     animate()
     {
+        
+       
         setInterval(() =>
         {
+            if(this.world.keyboard.RIGHT)
+            {
+                this.x += this.moveSpeed;
+                this.otherDirection = false;
+
+            }
+
+            if(this.world.keyboard.LEFT)
+            {
+                this.x -= this.moveSpeed;
+                this.otherDirection = true;
+            }
+
+            if(this.world.keyboard.UP)
+            {
+                this.y -= this.moveSpeed;
+            }
+            
+            if(this.world.keyboard.DOWN)
+            {
+                this.y += this.moveSpeed;
+            }
+
+            this.world.camera_x = -this.x;
+
+        },1000/60) 
+
+        setInterval(() =>
+        {
+            
+           
             let i = this.currentImage % this.IMAGES_IDLE.length; //let i = 0,1,2,3,4,5,6,0.... 
             let path = this.IMAGES_IDLE[i];
             this.img = this.imageCache[path];
             this.currentImage++;
+            
+            
         },100)
             
     }  
-
+    
 
     jump()
     {

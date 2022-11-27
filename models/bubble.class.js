@@ -1,4 +1,4 @@
-class Bubble extends MovaableObject
+class Bubble extends MoveableObject
 {
 
    
