@@ -12,24 +12,29 @@ class World
 
     bubbles = 
     [
-        new Bubble(),
-       
-        
+        new Bubble(),   
     ]
 
     backgroundObject = 
     [
-        new BackgroundObject('img/3. Background/Layers/2. Floor/D1.png')
+        
+        new BackgroundObject('img/3. Background/Layers/5. Water/D1.png', 0),
+        new BackgroundObject('img/3. Background/Layers/4.Fondo 2/D1.png', 0),
+        new BackgroundObject('img/3. Background/Layers/2. Floor/D1.png', 0),
+        new BackgroundObject('img/3. Background/Layers/3.Fondo 1/D1.png', 0),
+        new BackgroundObject('img/3. Background/Layers/2. Floor/D1.png', 0),
+        
     ]
     
     canvas;
     ctx;
-
-    constructor(canvas)
+    keyboard;
+    
+    constructor(canvas, keyboard)
     {
         this.ctx = canvas.getContext('2d')
         this.canvas = canvas;
-
+        this.keyboard = keyboard;
         this.draw();
         
     }
@@ -38,14 +43,12 @@ class World
     {
         //clearing the previouis canvas
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-
+        this.addObjectsToMap(this.backgroundObject);
+        this.addObjectsToMap(this.bubbles);
         this.addToMap(this.character);
-
         this.addObjectsToMap(this.enemies);
 
-        this.addObjectsToMap(this.bubbles);
 
-        this.addObjectsToMap(this.backgroundObject);
 
 
         //draw() wird immer wieder aufgerufen
